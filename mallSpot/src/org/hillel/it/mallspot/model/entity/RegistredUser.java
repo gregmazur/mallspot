@@ -1,9 +1,9 @@
 package org.hillel.it.mallspot.model.entity;
 
 public class RegistredUser extends User{
-	String login;
-	String password;
-	int id;
+	private String login;
+	private String password;
+	private int id;
 
 	@Override
 	void showMall() {

@@ -1,11 +1,11 @@
 package org.hillel.it.mallspot.model.entity;
 
 public class Product {
-	String image;
-	double price;
-	String description;
-	String name;
-	Store[] availableInStores;
-	String brand;
-	int productId;
+	private String image;
+	private double price;
+	private String description;
+	private String name;
+	private Store[] availableInStores;
+	private String brand;
+	private int productId;
 }
