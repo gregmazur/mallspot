@@ -5,9 +5,7 @@ import java.util.List;
 
 import org.hillel.it.mallspot.model.entity.Brand;
 import org.hillel.it.mallspot.model.entity.Category;
-import org.hillel.it.mallspot.model.entity.Mall;
 import org.hillel.it.mallspot.model.entity.Product;
-import org.hillel.it.mallspot.model.entity.Store;
 import org.hillel.it.mallspot.persistance.repository.ProductsRepository;
 
 public class MemoryProductRepository implements ProductsRepository {
@@ -44,12 +42,12 @@ public class MemoryProductRepository implements ProductsRepository {
 		}
 		return products;
 	}
-
+	
 	@Override
-	public List<Product> getProductsByStore(Store store) {
+	public List<Product> getProductsByBrand(Brand brand) {
 		List<Product> products = new ArrayList<Product>();
 		for (Product product : this.products) {
-			if(product..contains(category.toString())){
+			if(product.getBrand().equals(brand)){
 				products.add(product);
 			}
 		}
@@ -57,15 +55,36 @@ public class MemoryProductRepository implements ProductsRepository {
 	}
 
 	@Override
-	public List<Product> getProductsByMall(Mall mall) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Product> getProductsByPrice(float priceFrom) {
+		List<Product> products = new ArrayList<Product>();
+		for (Product product : this.products) {
+			if(product.getPrice() > priceFrom){
+				products.add(product);
+			}
+		}
+		return products;
 	}
 
 	@Override
-	public List<Product> getProductsByBrand(Brand brand) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Product> getProductsByPrice(float priceFrom, float priceMax) {
+		List<Product> products = new ArrayList<Product>();
+		for (Product product : this.products) {
+			if(product.getPrice() > priceFrom && product.getPrice() < priceMax){
+				products.add(product);
+			}
+		}
+		return products;
+	}
+
+	@Override
+	public List<Product> getProductsWithMaxPrice(float priceMax) {
+		List<Product> products = new ArrayList<Product>();
+		for (Product product : this.products) {
+			if( product.getPrice() < priceMax){
+				products.add(product);
+			}
+		}
+		return products;
 	}
 
 }

@@ -3,14 +3,14 @@ package org.hillel.it.mallspot.model.entity;
 
 public class Product {
 	private byte[] image;
-	private double price;
+	private float price;
 	private String description;// categories(tag) are being saved here 
 	private String name;
 	private Brand brand;
 	private long productId;
 	
 	
-	public Product(String name, double price, String description, 
+	public Product(String name, float price, String description, 
 			Brand brand) {
 		super();
 		this.price = price;
@@ -24,10 +24,10 @@ public class Product {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-	public double getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 	public String getDescription() {
