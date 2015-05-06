@@ -19,8 +19,7 @@ public class Service implements MallSpotService, MallSpotStoreAdminService {
 		if (usertype.equalsType("Administrator")) {
 			return;
 		}
-		User user = new User(firstname, lastname, login, email, password,
-				usertype);
+		User user = new User(firstname, lastname, usertype, login, email, password);
 		if (memoryUserRepository.getUserByLogin(login) != null) {
 			if (usertype.equalsType("Storeadmin")) {
 				return;

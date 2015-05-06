@@ -2,15 +2,18 @@ package org.hillel.it.mallspot.persistance.inmemory;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.hillel.it.mallspot.model.entity.Store;
 import org.hillel.it.mallspot.model.entity.User;
+import org.hillel.it.mallspot.persistance.repository.StoreAdminRepository;
 import org.hillel.it.mallspot.persistance.repository.UserRepository;
 
-public class MemoryUserRepository implements UserRepository {
-	List<User> users = new ArrayList<User>();
+public class MemoryAdminRepository implements StoreAdminRepository,UserRepository {
+	List<User> admins = new ArrayList<User>();
+	
 
 	@Override
 	public User getUserByLogin(String login) {
-		for (User user : users) {
+		for (User user : admins) {
 			if (user.loginEquals(login)) {
 				return user;
 			}
@@ -30,7 +33,7 @@ public class MemoryUserRepository implements UserRepository {
 	@Override
 	public boolean addUser(User user) {
 		if (getUserByLogin(user.getEmail()) == null) {
-			users.add(user);
+			admins.add(user);
 			return true;
 		}
 		return false;
@@ -39,24 +42,37 @@ public class MemoryUserRepository implements UserRepository {
 	@Override
 	public String updateUser(User user, String login, String password) {
 		if (removeUser(login, password)) {
-			users.add(user);
+			admins.add(user);
 			return "Updated";
 		}
 		return "Error";
 	}
 
 	public int usersSize() {
-		return users.size();
+		return admins.size();
 	}
 
 	@Override
 	public boolean removeUser(String login, String password) {
 		User user = getUserByLoginAndPassword(login, password);
 		if (user != null) {
-			return users.remove(user);
+			return admins.remove(user);
 
 		}
 		return false;
 	}
+
+	@Override
+	public boolean addStoreToAdmin(String login, Store store) {
+		return getUserByLogin(login).addStore(store);
+		
+	}
+
+	@Override
+	public boolean removeStoreFromAdmin(String login, Store store) {
+		return getUserByLogin(login).removeStore(store);
+	}
+
+	
 
 }

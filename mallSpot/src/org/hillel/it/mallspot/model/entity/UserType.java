@@ -1,12 +1,11 @@
 package org.hillel.it.mallspot.model.entity;
 
 public enum UserType {
-	ADMINISTRATOR("Administrator"), 
+	SUPERADMIN("SUPERADMIN"), 
 	STOREADMIN("STOREADMIN"), 
-	USER("User");
+	USER("USER");
 	private final String type;
-	private Store store;
-	
+
 
 	private UserType(String type) {
 		this.type = type;

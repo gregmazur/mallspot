@@ -1,17 +1,12 @@
 package org.hillel.it.mallspot.persistance.repository;
 
-import java.util.ArrayList;
-
-import org.hillel.it.mallspot.model.entity.Mall;
 import org.hillel.it.mallspot.model.entity.Store;
-import org.hillel.it.mallspot.model.entity.User;
+
 
 public interface StoreAdminRepository {
-	
-	void getStoresByMall(String login, Mall mall);
 
-	void insertStoreAdmin(User user);
+	boolean addStoreToAdmin(String login, Store store);
 
-	ArrayList<Store> getStores(String login);
+	boolean removeStoreFromAdmin(String login, Store store);
 
 }

@@ -8,11 +8,11 @@ public interface UserRepository {
 
 	User getUserByLoginAndPassword(String login, String password);
 
-	void insertUser(User user);
+	boolean addUser(User user);
 
-	void updateUser(User user, String login, String password);
+	String updateUser(User user, String login, String password);
 
-	void removeUser(String login, String password);
+	boolean removeUser(String login, String password);
 
 	
 

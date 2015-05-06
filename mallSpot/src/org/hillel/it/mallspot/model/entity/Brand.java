@@ -1,24 +1,19 @@
 package org.hillel.it.mallspot.model.entity;
 
-public class Mall extends BaseEntity {
-	private Store[] stores;
-	private String position;
+public class Brand {
+	private long id;
+	private byte[] picture;
 	private String name;
-	public Mall(String name) {
+	String description;
+	public Brand(String name) {
 		super();
 		this.name = name;
 	}
-	public Store[] getStores() {
-		return stores;
+	public byte[] getPicture() {
+		return picture;
 	}
-	public void setStores(Store[] stores) {
-		this.stores = stores;
-	}
-	public String getPosition() {
-		return position;
-	}
-	public void setPosition(String position) {
-		this.position = position;
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
 	}
 	public String getName() {
 		return name;
@@ -26,10 +21,17 @@ public class Mall extends BaseEntity {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
@@ -41,7 +43,9 @@ public class Mall extends BaseEntity {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Mall other = (Mall) obj;
+		Brand other = (Brand) obj;
+		if (id != other.id)
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -51,5 +55,5 @@ public class Mall extends BaseEntity {
 	}
 	
 	
-	
+
 }
