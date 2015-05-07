@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hillel.it.mallspot.model.entity.Brand;
-import org.hillel.it.mallspot.model.entity.Category;
 import org.hillel.it.mallspot.model.entity.Product;
 import org.hillel.it.mallspot.persistance.repository.ProductsRepository;
 
@@ -33,10 +32,10 @@ public class MemoryProductRepository implements ProductsRepository {
 	}
 
 	@Override
-	public List<Product> getProductsWithTags(List<Category> category) {
+	public List<Product> getProductsWithTags(String category) {
 		List<Product> products = new ArrayList<Product>();
 		for (Product product : this.products) {
-			if(product.getDescription().contains(category.toString())){
+			if(product.getDescription().contains(category)){
 				products.add(product);
 			}
 		}
@@ -70,17 +69,6 @@ public class MemoryProductRepository implements ProductsRepository {
 		List<Product> products = new ArrayList<Product>();
 		for (Product product : this.products) {
 			if(product.getPrice() > priceFrom && product.getPrice() < priceMax){
-				products.add(product);
-			}
-		}
-		return products;
-	}
-
-	@Override
-	public List<Product> getProductsWithMaxPrice(float priceMax) {
-		List<Product> products = new ArrayList<Product>();
-		for (Product product : this.products) {
-			if( product.getPrice() < priceMax){
 				products.add(product);
 			}
 		}

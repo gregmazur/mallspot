@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Cart extends BaseEntity {
-	private final Map<String, CartItem> itemMap = Collections
-			.synchronizedMap(new HashMap<String, CartItem>());
+	private long cartId;
+	private User user;
+	private String comments;
+	private final Map<Long, CartItem> itemMap = Collections
+			.synchronizedMap(new HashMap<Long, CartItem>());
 	private final List<CartItem> itemList = new ArrayList<CartItem>();
 
 	public Iterator<CartItem> getCartItems() {
@@ -32,27 +35,22 @@ public class Cart extends BaseEntity {
 		return itemMap.containsKey(itemId);
 	}
 
-	public void addItem(Item item, boolean isInStock) {
-		CartItem cartItem = (CartItem) itemMap.get(item.getItemId());
+	public void addItem(Product product) {
+		CartItem cartItem = (CartItem) itemMap.get(product.getProductId());
 		if (cartItem == null) {
 			cartItem = new CartItem();
-			cartItem.setItem(item);
+			cartItem.setItem(product);
 			cartItem.setQuantity(0);
-			cartItem.setInStock(isInStock);
-			itemMap.put(item.getItemId(), cartItem);
+			itemMap.put(product.getProductId(), cartItem);
 			itemList.add(cartItem);
 		}
 		cartItem.incrementQuantity();
 	}
 
-	public Item removeItemById(String itemId) {
+	public boolean removeItemById(String itemId) {
 		CartItem cartItem = (CartItem) itemMap.remove(itemId);
-		if (cartItem == null) {
-			return null;
-		} else {
-			itemList.remove(cartItem);
-			return cartItem.getItem();
-		}
+		return itemList.remove(cartItem);
+
 	}
 
 	public void incrementQuantityByItemId(String itemId) {
@@ -70,11 +68,32 @@ public class Cart extends BaseEntity {
 		Iterator<CartItem> items = getAllCartItems();
 		while (items.hasNext()) {
 			CartItem cartItem = (CartItem) items.next();
-			Item item = cartItem.getItem();
-			double listPrice = item.getListPrice();
-			subTotal = listPrice * cartItem.getQuantity();
+			Product item = cartItem.getItem();
+			double price = item.getPrice();
+			subTotal = price * cartItem.getQuantity();
 		}
 		return subTotal;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getComments() {
+		return comments;
+	}
+
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
+	public List<CartItem> getItemList() {
+		return itemList;
+	}
+	
 
 }
