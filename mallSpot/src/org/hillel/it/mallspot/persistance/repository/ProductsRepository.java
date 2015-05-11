@@ -2,8 +2,8 @@ package org.hillel.it.mallspot.persistance.repository;
 
 import java.util.List;
 
-import org.hillel.it.mallspot.model.entity.Brand;
 import org.hillel.it.mallspot.model.entity.Product;
+import org.hillel.it.mallspot.model.entity.SearchCriteria;
 
 public interface ProductsRepository {
 	List<Product> getProductsByName(String name);
@@ -11,15 +11,11 @@ public interface ProductsRepository {
 	boolean addProduct(Product product);
 
 	boolean removeProduct(Product product);
-
-	List<Product> getProductsByBrand(Brand brand);
-
-	List<Product> getProductsByPrice(float priceFrom);
-
-	List<Product> getProductsByPrice(float priceFrom, float priceMax);
-
-	List<Product> getProductsWithTags(String category);
-
 	
+	boolean updateProduct(Product product, Product updatedProduct);
 
+	List<Product> searchProducts(SearchCriteria criteria);
+	
+	List<Product> getAllProducts();
+	
 }

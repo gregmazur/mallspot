@@ -2,7 +2,7 @@ package org.hillel.it.mallspot.model.entity;
 
 import java.util.ArrayList;
 
-public class User {
+public class User extends BaseEntity {
 
 	private long userId;
 	public long getUserId() {

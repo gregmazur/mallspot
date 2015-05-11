@@ -2,6 +2,7 @@ package org.hillel.it.mallspot.persistance.inmemory;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hillel.it.mallspot.model.entity.Store;
 import org.hillel.it.mallspot.model.entity.User;
 import org.hillel.it.mallspot.persistance.repository.StoreAdminRepository;
@@ -40,12 +41,13 @@ public class MemoryAdminRepository implements StoreAdminRepository,UserRepositor
 	}
 
 	@Override
-	public String updateUser(User user, String login, String password) {
-		if (removeUser(login, password)) {
-			admins.add(user);
-			return "Updated";
+	public boolean updateUser(User user, String login, String password) {
+		int userIndex = getUserIndex(login, password);
+		if ( userIndex > 0) {
+			admins.set(userIndex,user);
+			return true;
 		}
-		return "Error";
+		return false;
 	}
 
 	public int usersSize() {
@@ -54,10 +56,10 @@ public class MemoryAdminRepository implements StoreAdminRepository,UserRepositor
 
 	@Override
 	public boolean removeUser(String login, String password) {
-		User user = getUserByLoginAndPassword(login, password);
-		if (user != null) {
-			return admins.remove(user);
-
+		int userIndex = getUserIndex(login, password);
+		if ( userIndex > 0) {
+			admins.remove(userIndex);
+			return true;
 		}
 		return false;
 	}
@@ -73,6 +75,14 @@ public class MemoryAdminRepository implements StoreAdminRepository,UserRepositor
 		return getUserByLogin(login).removeStore(store);
 	}
 
-	
+	public int getUserIndex(String login, String password) {
+		for (int i = 0; i < admins.size(); i++) {
+			if (admins.get(i).loginEquals(login)
+					&& admins.get(i).passwordEquals(password)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
 }

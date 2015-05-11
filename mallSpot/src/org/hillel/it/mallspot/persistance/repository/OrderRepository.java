@@ -1,8 +1,10 @@
 package org.hillel.it.mallspot.persistance.repository;
 
-import org.hillel.it.mallspot.model.entity.Cart;
+import org.hillel.it.mallspot.model.entity.Order;
+
+
 
 public interface OrderRepository {
-boolean createOrder(Cart cart);
-boolean changeOrder(Cart cart, Cart newCart);
+boolean addOrder(Order order);
+boolean changeOrder(Order order, Order newOrder);
 }

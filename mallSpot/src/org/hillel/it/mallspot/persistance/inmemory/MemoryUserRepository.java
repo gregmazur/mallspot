@@ -37,12 +37,13 @@ public class MemoryUserRepository implements UserRepository {
 	}
 
 	@Override
-	public String updateUser(User user, String login, String password) {
-		if (removeUser(login, password)) {
-			users.add(user);
-			return "Updated";
+	public boolean updateUser(User user, String login, String password) {
+		int userIndex = getUserIndex(login, password);
+		if ( userIndex > 0) {
+			users.set(userIndex, user);
+			return true;
 		}
-		return "Error";
+		return false;
 	}
 
 	public int usersSize() {
@@ -51,12 +52,22 @@ public class MemoryUserRepository implements UserRepository {
 
 	@Override
 	public boolean removeUser(String login, String password) {
-		User user = getUserByLoginAndPassword(login, password);
-		if (user != null) {
-			return users.remove(user);
-
+		int userIndex = getUserIndex(login, password);
+		if ( userIndex > 0) {
+			users.remove(userIndex);
+			return true;
 		}
 		return false;
+	}
+
+	public int getUserIndex(String login, String password) {
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).loginEquals(login)
+					&& users.get(i).passwordEquals(password)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 }

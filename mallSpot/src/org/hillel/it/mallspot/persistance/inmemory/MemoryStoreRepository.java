@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hillel.it.mallspot.model.entity.Mall;
-import org.hillel.it.mallspot.model.entity.Product;
 import org.hillel.it.mallspot.model.entity.Store;
 import org.hillel.it.mallspot.model.entity.User;
 import org.hillel.it.mallspot.persistance.repository.StoreRepository;
 
 public class MemoryStoreRepository implements StoreRepository{
 	private List <Store> stores = new ArrayList<Store>();
-
+	
 	@Override
 	public List<Store> getAllStores() {
 		return stores;
@@ -39,17 +38,6 @@ public class MemoryStoreRepository implements StoreRepository{
 	}
 
 	@Override
-	public List<Store> getStoresWithThisProduct(Product product) {
-		List<Store> stores = new ArrayList<>();
-		for (Store store : this.stores) {
-			if(store.containsProduct(product)){
-				stores.add(store);
-			}
-		}
-		return stores;
-	}
-
-	@Override
 	public List<Store> getStoresByStoreAdmin(User user) {
 		List<Store> stores = new ArrayList<>();
 		for (Store store : this.stores) {
@@ -64,7 +52,7 @@ public class MemoryStoreRepository implements StoreRepository{
 	public List<Store> getStoresByCategory(String category) {
 		List<Store> stores = new ArrayList<>();
 		for (Store store : this.stores) {
-			if(store.getCategory().equals(category)){
+			if(store.getCategory().contains(category)){
 			stores.add(store);
 			}
 		}
@@ -73,38 +61,20 @@ public class MemoryStoreRepository implements StoreRepository{
 	}
 
 	@Override
-	public boolean addProductToStore(Store store, Product product) {
-		for (Store storeI : stores) {
-			if(store.equals(storeI)){
-				storeI.addProduct(product);
-				return true;
+	public List<Store> getStoreWithName(String name) {
+		List<Store> stores = new ArrayList<>();
+		for (Store store : stores) {
+			if(store.getName().contains(name)){
+				stores.add(store);
 			}
 		}
-		return false;
+		return stores;
 	}
 
-	@Override
-	public boolean removeProductFromStore(Store store, Product product) {
-		for (Store storeI : stores) {
-			if(store.equals(storeI)){
-				storeI.removeProduct(product);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
-	public List<Product> getAllProductsFromStore(Store store) {
-		List<Product> products = new ArrayList<>();
-		for (Store storeI : stores) {
-			if(store.equals(storeI)){
-			stores.add(store);
-			}
-		}
-		return products;
-	}
 	
+
+	
+
 	
 
 }

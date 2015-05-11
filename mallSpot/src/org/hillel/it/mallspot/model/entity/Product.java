@@ -1,13 +1,14 @@
 package org.hillel.it.mallspot.model.entity;
 
 
-public class Product {
+
+public class Product extends BaseEntity{
 	private byte[] image;
 	private float price;
 	private String description;// categories(tag) are being saved here 
 	private String name;
 	private Brand brand;
-	private long productId;
+	
 	
 	
 	public Product(String name, float price, String description, 
@@ -18,6 +19,34 @@ public class Product {
 		this.name = name;
 		this.brand = brand;
 	}
+	
+	public boolean matchCriteria(SearchCriteria criteria){
+		if (criteria.getName() != null){
+			if(!name.contains(criteria.getName()));
+			return false;
+		}
+		if(criteria.getBrand() != null){
+			if(!brand.equals(criteria.getBrand()));
+			return false;
+		}
+		if(criteria.getDescription() != null){
+			if(!description.contains(criteria.getDescription())){
+				return false;
+			}
+		}
+		if(criteria.getPriceMin() > 0){
+			if(price < criteria.getPriceMin()){
+				return false;
+			}
+		}
+		if(criteria.getPriceMax() > 0){
+			if(price > criteria.getPriceMax()){
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public byte[] getImage() {
 		return image;
 	}
@@ -47,38 +76,6 @@ public class Product {
 	}
 	public void setBrand(Brand brand) {
 		this.brand = brand;
-	}
-	public long getProductId() {
-		return productId;
-	}
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int) (productId ^ (productId >>> 32));
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Product other = (Product) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (productId != other.productId)
-			return false;
-		return true;
 	}
 	
 	

@@ -10,7 +10,7 @@ public interface UserRepository {
 
 	boolean addUser(User user);
 
-	String updateUser(User user, String login, String password);
+	boolean updateUser(User user, String login, String password);
 
 	boolean removeUser(String login, String password);
 

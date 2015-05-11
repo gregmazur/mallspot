@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Cart extends BaseEntity {
-	private long cartId;
 	private User user;
-	private String comments;
 	private final Map<Long, CartItem> itemMap = Collections
 			.synchronizedMap(new HashMap<Long, CartItem>());
 	private final List<CartItem> itemList = new ArrayList<CartItem>();
@@ -31,45 +29,45 @@ public class Cart extends BaseEntity {
 		return itemList.iterator();
 	}
 
-	public boolean containsItemId(String itemId) {
+	public boolean containsItemId(long itemId) {
 		return itemMap.containsKey(itemId);
 	}
 
 	public void addItem(Product product) {
-		CartItem cartItem = (CartItem) itemMap.get(product.getProductId());
+		CartItem cartItem = (CartItem) itemMap.get(product.getId());
 		if (cartItem == null) {
 			cartItem = new CartItem();
 			cartItem.setItem(product);
 			cartItem.setQuantity(0);
-			itemMap.put(product.getProductId(), cartItem);
+			itemMap.put(product.getId(), cartItem);
 			itemList.add(cartItem);
 		}
 		cartItem.incrementQuantity();
 	}
 
-	public boolean removeItemById(String itemId) {
+	public boolean removeItemById(long itemId) {
 		CartItem cartItem = (CartItem) itemMap.remove(itemId);
 		return itemList.remove(cartItem);
 
 	}
 
-	public void incrementQuantityByItemId(String itemId) {
+	public void incrementQuantityByItemId(long itemId) {
 		CartItem cartItem = (CartItem) itemMap.get(itemId);
 		cartItem.incrementQuantity();
 	}
 
-	public void setQuantityByItemId(String itemId, int quantity) {
+	public void setQuantityByItemId(long itemId, int quantity) {
 		CartItem cartItem = (CartItem) itemMap.get(itemId);
 		cartItem.setQuantity(quantity);
 	}
 
-	public double getSubTotal() {
-		double subTotal = 0;
+	public float getSubTotal() {
+		float subTotal = 0;
 		Iterator<CartItem> items = getAllCartItems();
 		while (items.hasNext()) {
 			CartItem cartItem = (CartItem) items.next();
 			Product item = cartItem.getItem();
-			double price = item.getPrice();
+			float price = item.getPrice();
 			subTotal = price * cartItem.getQuantity();
 		}
 		return subTotal;
@@ -81,14 +79,6 @@ public class Cart extends BaseEntity {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public String getComments() {
-		return comments;
-	}
-
-	public void setComments(String comments) {
-		this.comments = comments;
 	}
 
 	public List<CartItem> getItemList() {

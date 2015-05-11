@@ -3,8 +3,8 @@ package org.hillel.it.mallspot.persistance.inmemory;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hillel.it.mallspot.model.entity.Brand;
 import org.hillel.it.mallspot.model.entity.Product;
+import org.hillel.it.mallspot.model.entity.SearchCriteria;
 import org.hillel.it.mallspot.persistance.repository.ProductsRepository;
 
 public class MemoryProductRepository implements ProductsRepository {
@@ -14,7 +14,7 @@ public class MemoryProductRepository implements ProductsRepository {
 	public List<Product> getProductsByName(String name) {
 		List<Product> products = new ArrayList<Product>();
 		for (Product product : this.products) {
-			if(product.getName().contains(name)){
+			if(product.getName().equals(name)){
 				products.add(product);
 			}
 		}
@@ -32,47 +32,30 @@ public class MemoryProductRepository implements ProductsRepository {
 	}
 
 	@Override
-	public List<Product> getProductsWithTags(String category) {
+	public boolean updateProduct(Product product, Product updatedProduct) {
+		for (int i = 0; i < products.size(); i++) {
+			if(products.get(i).equals(product)){
+				products.set(i, updatedProduct);
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public List<Product> searchProducts(SearchCriteria criteria){
 		List<Product> products = new ArrayList<Product>();
 		for (Product product : this.products) {
-			if(product.getDescription().contains(category)){
+			if(product.matchCriteria(criteria)){
 				products.add(product);
 			}
 		}
+		return products;
+	}
+
+	@Override
+	public List<Product> getAllProducts() {
 		return products;
 	}
 	
-	@Override
-	public List<Product> getProductsByBrand(Brand brand) {
-		List<Product> products = new ArrayList<Product>();
-		for (Product product : this.products) {
-			if(product.getBrand().equals(brand)){
-				products.add(product);
-			}
-		}
-		return products;
-	}
-
-	@Override
-	public List<Product> getProductsByPrice(float priceFrom) {
-		List<Product> products = new ArrayList<Product>();
-		for (Product product : this.products) {
-			if(product.getPrice() > priceFrom){
-				products.add(product);
-			}
-		}
-		return products;
-	}
-
-	@Override
-	public List<Product> getProductsByPrice(float priceFrom, float priceMax) {
-		List<Product> products = new ArrayList<Product>();
-		for (Product product : this.products) {
-			if(product.getPrice() > priceFrom && product.getPrice() < priceMax){
-				products.add(product);
-			}
-		}
-		return products;
-	}
 
 }

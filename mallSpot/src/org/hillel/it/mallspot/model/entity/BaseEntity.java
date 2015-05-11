@@ -9,11 +9,11 @@ public abstract class BaseEntity {
 	private Date modifiedDate;
 	private User createdBy;
 	private User modifiedBy;
+	
 	public void setCreatedDate(Date createdDate){
 		this.createdDate = createdDate;
 	}
-	
-	
+		
 	public void setModifiedDate(Date modifiedDate){
 		this.modifiedDate = modifiedDate;
 	}
@@ -35,8 +35,14 @@ public abstract class BaseEntity {
 	public void setId(long id) {
 		this.id = (this.id == 0 ? id : this.id);
 	}
-	public long getId() {
+	public  long getId(){
 		return id;
+	}
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+	public Date getModifiedDate() {
+		return modifiedDate;
 	}
 
 
@@ -62,6 +68,9 @@ public abstract class BaseEntity {
 			return false;
 		return true;
 	}
+
+
+	
 	
 	
 

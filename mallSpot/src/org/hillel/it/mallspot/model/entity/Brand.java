@@ -1,6 +1,6 @@
 package org.hillel.it.mallspot.model.entity;
 
-public class Brand {
+public class Brand extends BaseEntity{
 	private long id;
 	private byte[] picture;
 	private String name;
