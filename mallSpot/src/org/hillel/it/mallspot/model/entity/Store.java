@@ -34,6 +34,9 @@ public class Store extends BaseEntity{
 	public List<Product> getProducts() {
 		return products.getAllProducts();
 	}
+	public ProductsRepository getProductsRep(){
+		return products;
+	}
 	public void setProducts(ProductsRepository products) {
 		this.products = products;
 	}

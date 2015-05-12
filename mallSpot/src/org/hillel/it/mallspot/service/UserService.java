@@ -15,11 +15,15 @@ public interface UserService {
 	List<Store> getStoresInMall(Mall mall);
 
 	List<Product> getProductsOfTheStore(Store store);
+	
+	List<Product> getAllProducts();
 
 	List<Product> getProductsByCriterea(SearchCriteria criteria);
 
-	List<Product> getProductsByStore(SearchCriteria criteria,
+	List<Product> getProductsBySeachCriteria(SearchCriteria criteria,
 			Store store);
+	List<Product> getProductsBySeachCriteria(SearchCriteria criteria,
+			Mall mall);
 	
 	boolean makeOrder(Cart cart);
 
@@ -30,4 +34,6 @@ public interface UserService {
 	boolean signUp(User user);
 	
 	List<Order> seeOrders(User user);
+	
+	boolean changeOrder(Order order, Order changedOrder);
 }
