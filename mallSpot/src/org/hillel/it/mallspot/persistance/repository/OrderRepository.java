@@ -5,6 +5,6 @@ import org.hillel.it.mallspot.model.entity.Order;
 
 
 public interface OrderRepository {
-boolean addOrder(Order order);
-boolean changeOrder(Order order, Order newOrder);
+Order addOrder(Order order);
+Order changeOrder(Order order, Order newOrder);
 }

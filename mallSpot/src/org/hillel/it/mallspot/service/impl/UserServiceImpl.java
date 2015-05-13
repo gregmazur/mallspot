@@ -55,19 +55,22 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<Product> getProductsBySeachCriteria(SearchCriteria criteria,
 			Mall mall) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Product> products = new ArrayList<Product>();
+		for (Store store : mallRep.getStoresByMall(mall)) {
+			products = ListUtils.sum(products, store.getProductsRep()
+					.searchProducts(criteria));
+		}
+		return products;
 	}
 	@Override
-	public boolean makeOrder(Cart cart) {
-		// TODO Auto-generated method stub
-		return false;
+	public Order makeOrder(Order order) {
+		return orderRep.addOrder(order);
 	}
 
 	@Override
 	public User login(String name, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRep.getUserByLoginAndPassword(name, password);
+		
 	}
 
 	@Override
