@@ -2,29 +2,25 @@ package org.hillel.it.mallspot.service.impl;
 
 import java.util.List;
 
-import org.hillel.it.mallspot.model.entity.Cart;
 import org.hillel.it.mallspot.model.entity.Mall;
 import org.hillel.it.mallspot.model.entity.Order;
 import org.hillel.it.mallspot.model.entity.Product;
 import org.hillel.it.mallspot.model.entity.SearchCriteria;
 import org.hillel.it.mallspot.model.entity.Store;
 import org.hillel.it.mallspot.model.entity.User;
-import org.hillel.it.mallspot.service.UserService;
+import org.hillel.it.mallspot.persistance.repository.StoreAdminRepository;
 import org.hillel.it.mallspot.service.StoreAdminService;
 
-public class StoreAdminServiceImpl implements UserService, StoreAdminService {
-
+public class StoreAdminServiceImpl implements StoreAdminService {
+	StoreAdminRepository storeAdm;
+	
+	
 	@Override
 	public boolean createStore(Store store, Mall mall) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
-	public boolean updateStore() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public List<Store> getStoresInMall(Mall mall) {
@@ -65,39 +61,32 @@ public class StoreAdminServiceImpl implements UserService, StoreAdminService {
 	}
 
 	@Override
-	public boolean makeOrder(Cart cart) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public User login(String name, String password) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean logout() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean signUp(User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public User loginAsStoreAdmin(String login, String password) {
+		return storeAdm.loginAsStoreAdmin(login, password);
 	}
 
 	@Override
-	public List<Order> seeOrders(User user) {
+	public Order seeOrders() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean changeOrder(Order order, Order changedOrder) {
+	public boolean updateStore(User user, Store store) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public boolean signUp(String name, String login, String password) {
+		return storeAdm.addStoreAdmin(name, login, password);
 	}
 
 }

@@ -19,7 +19,7 @@ public class MemoryUserRepository implements UserRepository {
 	}
 
 	@Override
-	public User getUserByLoginAndPassword(String login, String password) {
+	public User loginAsUser(String login, String password) {
 		User user = getUserByLogin(login);
 		if (user != null && user.passwordEquals(password)) {
 			return user;

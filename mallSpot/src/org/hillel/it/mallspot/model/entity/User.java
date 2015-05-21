@@ -1,6 +1,6 @@
 package org.hillel.it.mallspot.model.entity;
 
-import java.util.ArrayList;
+
 
 public class User extends BaseEntity {
 
@@ -18,10 +18,10 @@ public class User extends BaseEntity {
 	private String email;
 	private String password;
 	private UserType userType;
-	private ArrayList<Store> stores;
-
-	public User(String email, String password, UserType userType) {
+	
+	public User(String name,String email, String password, UserType userType) {
 		super();
+		this.firstName = name;
 		this.email = email;
 		this.password = password;
 		this.userType = userType;
@@ -79,20 +79,6 @@ public class User extends BaseEntity {
 		this.userType = userType;
 	}
 
-	public ArrayList<Store> getStores() {
-		return stores;
-	}
-
-	public void setStores(ArrayList<Store> stores) {
-		this.stores = stores;
-	}
-
-	public boolean addStore(Store store) {
-		return stores.add(store);
-	}
-
-	public boolean removeStore(Store store) {
-		return stores.remove(store);
-	}
+	
 
 }

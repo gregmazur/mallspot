@@ -6,7 +6,7 @@ public interface UserRepository {
 
 	User getUserByLogin(String login);
 
-	User getUserByLoginAndPassword(String login, String password);
+	User loginAsUser(String login, String password);
 
 	boolean addUser(User user);
 
