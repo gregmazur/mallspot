@@ -1,0 +1,57 @@
+body {
+	padding-top: 70px;
+}
+
+#header {
+	background: #ccc;
+	height: 100px;
+	padding: 5px;
+}
+
+.nav.nav-pills {
+	margin: 5px 0px;
+}
+
+.navbar-form.navbar-left {
+	padding-left: 125px;
+}
+
+#content {
+	padding: 5px;
+	padding-top: 20px;
+}
+
+#sidebar {
+	margin: 0px;
+	padding: 5px;
+	background: #666;
+}
+
+#footer {
+	background: #333;
+	color: #fff;
+	height: 50px;
+	padding: 5px;
+	margin: 20px;
+}
+
+.form-control {
+	width: 178px;
+}
+
+#reg {
+	padding: 10px;
+}
+
+.carousel.slide {
+	width: 100%;
+}
+
+/*.input-group {
+	width: 50%;
+	margin: 5px auto;
+}*/
+
+.btnReg {
+	margin: 20px auto;
+}
