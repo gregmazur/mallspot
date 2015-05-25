@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 		for (Mall mall : malls) {
 			for (Store store : mall.getStores()) {
 				for (Product product : store.getProducts()) {
-					if(product.matchCriteria(criteria)){
+					if (product.matchCriteria(criteria)) {
 						products.add(product);
 					}
 				}
@@ -49,19 +49,40 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<Product> getProductsBySeachCriteria(SearchCriteria criteria, Store store) {
-		return store.getProductsRep().searchProducts(criteria);
+	public List<Product> getProductsBySeachCriteria(SearchCriteria criteria,
+			Store store) {
+		List<Mall> malls = mallRep.getAllMalls();
+		List<Product> products = new ArrayList<Product>();
+		for (Mall mall : malls) {
+			for (Store storeI : mall.getStores()) {
+				if (storeI.equals(store)) {
+					for (Product product : store.getProducts()) {
+						if (product.matchCriteria(criteria)) {
+							products.add(product);
+						}
+					}
+					return products;
+				}
+			}
+		}
+
+		return products;
 	}
+
 	@Override
 	public List<Product> getProductsBySeachCriteria(SearchCriteria criteria,
 			Mall mall) {
 		List<Product> products = new ArrayList<Product>();
 		for (Store store : mallRep.getStoresByMall(mall)) {
-			products = ListUtils.sum(products, store.getProductsRep()
-					.searchProducts(criteria));
+			for (Product product : store.getProducts()){
+				if(product.matchCriteria(criteria)){
+					products.add(product);
+				}
+			}
 		}
 		return products;
 	}
+
 	@Override
 	public Order makeOrder(Order order) {
 		return orderRep.addOrder(order);
@@ -70,7 +91,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User login(String name, String password) {
 		return userRep.loginAsUser(name, password);
-		
+
 	}
 
 	@Override
@@ -82,7 +103,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean signUp(String name, String email, String password) {
 		User user = new User(name, email, password, UserType.USER);
-		return userRep.addUser(user); 
+		return userRep.addUser(user);
 	}
 
 	@Override
@@ -109,7 +130,5 @@ public class UserServiceImpl implements UserService {
 
 		return products;
 	}
-
-	
 
 }
