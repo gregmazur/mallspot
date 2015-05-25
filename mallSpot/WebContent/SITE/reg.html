@@ -110,7 +110,7 @@
 				<div class="container">
 					<h2>Регистрация</h2>
 					<div class="row">
-						<form class="form-horizontal" role="form">
+						<form class="form-horizontal" role="form" action="reg.jsp" method="POST">
 							<div class="form-group">
 								<label for="inputName" class="col-sm-3 control-label">Имя</label>
 								<div class="col-sm-9">
@@ -138,17 +138,17 @@
 							<div class="form-group">
 								<label for="optionsRadios1" class="col-sm-3 control-label">Обычный пользователь</label>
 								<div class="col-sm-9">
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+									<input type="radio" name="optionsRadios" id="optionsRadios1" value="user" checked>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="optionsRadios2" class="col-sm-3 control-label">Администратор</label>
 								<div class="col-sm-9">
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+									<input type="radio" name="optionsRadios" id="optionsRadios2" value="storeAdmin">
 								</div>
 							</div>
 							<div class="btnReg">
-								<button type="button" class="btn btn-primary btn-lg">Зарегистрироваться</button>
+								<button type="submit" VALUE="Submit" class="btn btn-primary btn-lg">Зарегистрироваться</button>
 							</div>
 						</form>
 						
