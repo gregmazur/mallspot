@@ -15,16 +15,12 @@
 			String passConfrim = request.getParameter("inputpassword2");
 			String userType = request.getParameter("inputName");
 			String type = request.getParameter("optionsRadios");
-			try{if (name.isEmpty()) {
+			if (name.length() <5) {
 				session.setAttribute("errorText",
 						"The password needs to be more then 6 symbols");
 				response.sendRedirect("reg.jsp");
-			}}catch (Exception e){
-				e.printStackTrace();
-				session.setAttribute("errorText",
-						"Try again");
-				response.sendRedirect("reg.jsp");
 			}
+			
 		}
 
 		
