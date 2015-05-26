@@ -112,7 +112,7 @@
 				<div class="container">
 					<h2>Регистрация</h2>
 					<div class="row">
-						<form class="form-horizontal"   action="registration.jsp" method="POST">
+						<form class="form-horizontal" action="registration.jsp" method="POST">
 							<div class="form-group">
 								<label for="inputName" class="col-sm-3 control-label">Имя</label>
 								<div class="col-sm-9">
@@ -150,7 +150,7 @@
 								</div>
 							</div>
 							<div class="btnReg">
-								<input type="submit" VALUE="Submit" class="btn btn-primary btn-lg">Зарегистрироваться</input>
+								<input type="submit" class="btn btn-primary btn-lg" value="Зарегистрироваться"></input>
 							</div>
 						</form>
 						
