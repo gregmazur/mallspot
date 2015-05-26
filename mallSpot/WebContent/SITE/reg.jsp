@@ -28,7 +28,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">easyWalk</a>
+					<a class="navbar-brand" href="index.jsp">easyWalk</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,13 +89,13 @@
 												<label for="exampleInputPassword1">Пароль</label>
 												<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Введите пароль"></div>
 												<div class="checkbox"></div>
-												<a href="account.html" class="btn btn-primary">Войти</a>
+												<a href="account.jsp" class="btn btn-primary">Войти</a>
 												<a href="#">Забыли пароль?</a>
 											</form>
 										</li>
 										<li class="divider"></li>
 										<li>
-											<a href="reg.html" align="center"> <strong>Регистрация</strong>
+											<a href="reg.jsp" align="center"> <strong>Регистрация</strong>
 											</a>
 										</li>
 									</ul>
@@ -112,6 +112,9 @@
 				<div class="container">
 					<h2>Регистрация</h2>
 					<div class="row">
+						<div class="alert alert-danger">
+							<p><% out.println(session.getAttribute("errorText"));  %></p>
+						</div>
 						<form class="form-horizontal" action="registration.jsp" method="POST">
 							<div class="form-group">
 								<label for="inputName" class="col-sm-3 control-label">Имя</label>
@@ -156,7 +159,7 @@
 						
 					</div>
 				</div>
-				<p><% out.println(session.getAttribute("errorText"));  %></p>
+				
 				
 				<!-- Регистрация -->
 
