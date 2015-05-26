@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html">
 <html lang="en">
 <head>
 
@@ -122,7 +122,7 @@
 							<div class="form-group">
 								<label for="inputEmail" class="col-sm-3 control-label">Email</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Введите email" required>
+									<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Введите email" required>
 								</div>
 							</div>
 							<div class="form-group">
