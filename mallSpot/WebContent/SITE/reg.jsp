@@ -116,25 +116,25 @@
 							<div class="form-group">
 								<label for="inputName" class="col-sm-3 control-label">Имя</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" id="inputName" placeholder="Введите имя" required>
+									<input type="text" class="form-control" id="inputName" name="inputName" placeholder="Введите имя" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputEmail" class="col-sm-3 control-label">Email</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" id="inputEmail" placeholder="Введите email" required>
+									<input type="text" class="form-control" id="inputEmail" name="inputEmail"placeholder="Введите email" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword" class="col-sm-3 control-label">Пароль</label>
 								<div class="col-sm-9">
-									<input type="password" class="form-control" id="inputPassword" placeholder="Введите пароль" required>
+									<input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Введите пароль" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inputPassword2" class="col-sm-3 control-label">Повторите пароль</label>
 								<div class="col-sm-9">
-									<input type="password" class="form-control" id="inputPassword2" placeholder="Повторите пароль" required>
+									<input type="password" class="form-control" id="inputPassword2" name="inputPassword2" placeholder="Повторите пароль" required>
 								</div>
 							</div>
 							<div class="form-group">
