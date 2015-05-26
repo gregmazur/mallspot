@@ -122,7 +122,7 @@
 							<div class="form-group">
 								<label for="inputEmail" class="col-sm-3 control-label">Email</label>
 								<div class="col-sm-9">
-									<input type="text" class="form-control" id="inputEmail" name="inputEmail"placeholder="Введите email" required>
+									<input type="text" class="form-control" id="inputEmail" name="inputEmail" placeholder="Введите email" required>
 								</div>
 							</div>
 							<div class="form-group">
@@ -140,13 +140,13 @@
 							<div class="form-group">
 								<label for="optionsRadios1" class="col-sm-3 control-label">Обычный пользователь</label>
 								<div class="col-sm-9">
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="user" checked>
+									<input type="radio" name="optionsRadios1" id="optionsRadios1" value="user" checked>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="optionsRadios2" class="col-sm-3 control-label">Администратор</label>
 								<div class="col-sm-9">
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="storeAdmin">
+									<input type="radio" name="optionsRadios2" id="optionsRadios2" value="storeAdmin">
 								</div>
 							</div>
 							<div class="btnReg">
