@@ -15,5 +15,7 @@ public interface SuperAdminService extends ServiceView {
 	boolean createStore(Store store, Mall mall);
 
 	boolean updateStore();
+	
+	boolean removeStore(Store store);
 
 }

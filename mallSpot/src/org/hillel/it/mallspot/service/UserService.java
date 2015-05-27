@@ -5,7 +5,7 @@ import java.util.List;
 import org.hillel.it.mallspot.model.entity.Order;
 import org.hillel.it.mallspot.model.entity.User;
 
-public interface UserService extends ServiceView{
+public interface UserService {
 	
 	Order makeOrder(Order order);
 

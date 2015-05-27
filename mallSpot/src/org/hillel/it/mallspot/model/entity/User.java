@@ -1,8 +1,10 @@
 package org.hillel.it.mallspot.model.entity;
 
+import java.io.Serializable;
 
 
-public class User extends BaseEntity {
+
+public class User extends BaseEntity implements Serializable{
 
 	private long userId;
 	public long getUserId() {

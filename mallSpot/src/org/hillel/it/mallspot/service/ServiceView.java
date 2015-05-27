@@ -14,10 +14,10 @@ public interface ServiceView {
 	
 	List<Product> getAllProducts();
 
-	List<Product> getProductsByCriterea(SearchCriteria criteria);
+	List<Product> searchProductsByCriterea(SearchCriteria criteria);
 
-	List<Product> getProductsBySeachCriteria(SearchCriteria criteria,
+	List<Product> searchProductsBySeachCriteria(SearchCriteria criteria,
 			Store store);
-	List<Product> getProductsBySeachCriteria(SearchCriteria criteria,
+	List<Product> searchProductsBySeachCriteria(SearchCriteria criteria,
 			Mall mall);
 }
