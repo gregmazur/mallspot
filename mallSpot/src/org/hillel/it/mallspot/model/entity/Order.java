@@ -1,14 +1,17 @@
 package org.hillel.it.mallspot.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Order extends BaseEntity {
 	private User user;
-	private Cart cart;
+	private List<CartItem> itemList = new ArrayList<CartItem>();
 	private String additionalInfo;
 	
 	public Order(User user, Cart cart, String additionalInfo) {
 		super();
 		this.user = user;
-		this.cart = cart;
+		itemList = cart.getCartItemList();
 		this.additionalInfo = additionalInfo;
 	}
 
@@ -20,12 +23,12 @@ public class Order extends BaseEntity {
 		this.user = user;
 	}
 
-	public Cart getCart() {
-		return cart;
+	public List<CartItem> getItemList() {
+		return itemList;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public void setItemList(List<CartItem> itemList) {
+		this.itemList = itemList;
 	}
 
 	public String getAdditionalInfo() {

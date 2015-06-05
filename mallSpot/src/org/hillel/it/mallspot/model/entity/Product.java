@@ -8,6 +8,7 @@ public class Product extends BaseEntity{
 	private String description;// categories(tag) are being saved here 
 	private String name;
 	private Brand brand;
+	private long storeId; //specifies store to which the product belongs
 	
 	
 	
@@ -77,6 +78,15 @@ public class Product extends BaseEntity{
 	public void setBrand(Brand brand) {
 		this.brand = brand;
 	}
+
+	public long getStoreId() {
+		return storeId;
+	}
+
+	public void setStoreId(long id) {
+		this.storeId = id;
+	}
+	
 	
 	
 }

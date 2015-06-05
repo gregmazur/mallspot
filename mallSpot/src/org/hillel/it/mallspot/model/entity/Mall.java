@@ -1,26 +1,18 @@
 package org.hillel.it.mallspot.model.entity;
 
-import java.util.List;
 
-public class Mall extends BaseEntity {
-	private long id;
-	private List<Store> stores;
+
+public class Mall extends BaseEntity {	
+	
 	private String name;
 	private String description;
 	private byte[] picture;
+	
 	public Mall(String name) {
 		super();
 		this.name = name;
 	}
-	public List<Store> getStores() {
-		return stores;
-	}
-	public void setStores(List<Store> stores) {
-		this.stores = stores;
-	}
-	public boolean addStore(Store store){
-		return stores.add(store);
-	}
+	
 	public String getName() {
 		return name;
 	}

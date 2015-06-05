@@ -2,19 +2,14 @@ package org.hillel.it.mallspot.model.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 
+
+@Entity
 
 public class User extends BaseEntity implements Serializable{
 
-	private long userId;
-	public long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
-
+	
 	private String firstName;
 	private String lastName;
 	private String email;

@@ -1,6 +1,6 @@
 package org.hillel.it.mallspot.model.entity;
 
-import java.util.List;
+
 
 
 
@@ -12,7 +12,7 @@ public class Store extends BaseEntity{
 	private Mall mall;
 	private User storeAdmin;
 	private String category;//what it sells
-	private List<Product> products;
+	
 	
 	public Store( String name, String description,
 			 String position, Mall mall, User storeAdmin) {
@@ -31,16 +31,6 @@ public class Store extends BaseEntity{
 		return user.equals(storeAdmin);
 	}
 	
-	public List<Product> getProducts() {
-		return products;
-	}
-	
-	public void addProduct(Product product) {
-		this.products.add(product);
-	}
-	public boolean removeProduct(Product product){
-		return products.remove(product);
-	}
 	public String getCategory() {
 		return category;
 	}
