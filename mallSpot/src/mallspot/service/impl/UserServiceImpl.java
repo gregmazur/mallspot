@@ -8,6 +8,7 @@ import mallspot.model.entity.User;
 import mallspot.model.entity.UserType;
 import mallspot.persistance.repository.OrderRepository;
 import mallspot.persistance.repository.UserRepository;
+import mallspot.persistance.repository.sql.UserRepositorySQL;
 import mallspot.service.UserService;
 
 public class UserServiceImpl extends ServiceViewImpl implements UserService,Serializable {
@@ -16,7 +17,7 @@ public class UserServiceImpl extends ServiceViewImpl implements UserService,Seri
 	 */
 	private static final long serialVersionUID = -250138080739387303L;
 	
-	private UserRepository userRep;
+	private UserRepository userRep = new UserRepositorySQL();
 	private OrderRepository orderRep;
 	
 	public UserServiceImpl() {
@@ -58,6 +59,10 @@ public class UserServiceImpl extends ServiceViewImpl implements UserService,Seri
 	}
 	public void setOrderRep(OrderRepository orderRep) {
 		this.orderRep = orderRep;
+	}
+	@Override
+	public boolean registration(User user) {
+		return userRep.addUser(user);
 	}
 
 

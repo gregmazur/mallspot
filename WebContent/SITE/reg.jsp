@@ -149,14 +149,14 @@
 						<label for="optionsRadios1" class="col-sm-3 control-label">Обычный
 							пользователь</label>
 						<div class="col-sm-9">
-							<input type="radio" name="optionsRadios1" id="optionsRadios1"
+							<input type="radio" name="optionsRadios" id="optionsRadios1"
 								value="user" checked>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="optionsRadios2" class="col-sm-3 control-label">Администратор</label>
 						<div class="col-sm-9">
-							<input type="radio" name="optionsRadios2" id="optionsRadios2"
+							<input type="radio" name="optionsRadios" id="optionsRadios2"
 								value="storeAdmin">
 						</div>
 					</div>

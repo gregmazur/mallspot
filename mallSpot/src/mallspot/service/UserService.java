@@ -6,6 +6,7 @@ import mallspot.model.entity.Order;
 import mallspot.model.entity.User;
 
 public interface UserService {
+	boolean registration( User user);
 	
 	Order makeOrder(Order order);
 

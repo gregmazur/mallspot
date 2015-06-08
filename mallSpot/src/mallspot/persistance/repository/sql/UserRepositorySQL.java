@@ -19,9 +19,10 @@ public class UserRepositorySQL extends DBHelper implements UserRepository{
 			try {
 				try (PreparedStatement ps = getConnection().prepareStatement(
 						"SELECT * FROM " + USERS_TABLE
-								+ "WHERE " + "email = ?")) {
+								+ " WHERE " + "email = ? ")) {
 					ps.setString(1, email);
 					try(ResultSet rs = ps.executeQuery()){
+						rs.next();
 						User user = new User();
 						user.setId(rs.getInt(1));
 						user.setFirstName(rs.getString(2));
@@ -73,7 +74,7 @@ public class UserRepositorySQL extends DBHelper implements UserRepository{
 	@Override
 	public boolean addUser(User user) {
 		if (startConection()) {
-			try {
+			try {if(getUserByLogin(user.getEmail()) == null){
 				try (PreparedStatement ps = getConnection().prepareStatement(
 						"INSERT INTO " + USERS_TABLE
 								+ " (first_name, last_name, email, password" 
@@ -89,6 +90,7 @@ public class UserRepositorySQL extends DBHelper implements UserRepository{
 					ps.executeUpdate();
 					return true;
 				}
+			}
 			} catch (SQLException e) {
 				e.printStackTrace();
 				return false;
